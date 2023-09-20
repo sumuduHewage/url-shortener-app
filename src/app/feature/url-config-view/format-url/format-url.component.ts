@@ -11,7 +11,8 @@ import {IUrlInformationDTO, UrlInformationDTO} from "../util/UrlInformationDTO";
 export class FormatUrlComponent implements OnInit {
   urlForm: FormGroup = new FormGroup({});
   expandUrlForm: FormGroup = new FormGroup({});
-  shortenedUrl: string = '';
+  shortenedUrl: string | undefined = '';
+  shortenedUrlLink: string | undefined = '';
   expandedUrl: string = '';
 
   constructor(
@@ -36,10 +37,14 @@ export class FormatUrlComponent implements OnInit {
       urlInformationDTO.longUrl = longUrl
 
       this.urlShortenerService.shortenUrl(urlInformationDTO).subscribe(
-        (response: any) => {
-          this.shortenedUrl = response;
+        (response: IUrlInformationDTO) => {
+          if(response != undefined){
+            this.shortenedUrl = response.shortUrl;
+            this.shortenedUrlLink = response.longUrl;
+          }
+
         },
-        (error) => {
+        (error: any): any => {
           console.error(error);
         }
       );
@@ -54,9 +59,12 @@ export class FormatUrlComponent implements OnInit {
 
       this.urlShortenerService.expandUrl(urlInformationDTO).subscribe(
         (response: any) => {
-          this.expandedUrl = response;
+          if(response != undefined){
+            this.expandedUrl = response.longUrl;
+          }
+
         },
-        (error) => {
+        (error: any) => {
           console.error(error);
         }
       );

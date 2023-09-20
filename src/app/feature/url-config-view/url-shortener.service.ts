@@ -11,11 +11,11 @@ export class UrlShortenerService {
   private apiUrl: string = environment.api_url;
   constructor(private http: HttpClient) { }
 
-  shortenUrl(urlInformationDTO: IUrlInformationDTO): Observable<string> {
-    return this.http.post(`${this.apiUrl}/api/shorten-url`, urlInformationDTO, { responseType: 'text' });
+  shortenUrl(urlInformationDTO: IUrlInformationDTO): Observable<IUrlInformationDTO> {
+    return this.http.post<IUrlInformationDTO>(`${this.apiUrl}/api/shorten-url`, urlInformationDTO);
   }
 
-  expandUrl(urlInformationDTO: IUrlInformationDTO): Observable<string> {
-    return this.http.post(`${this.apiUrl}/api/expand-url`, urlInformationDTO, { responseType: 'text' });
+  expandUrl(urlInformationDTO: IUrlInformationDTO): Observable<IUrlInformationDTO> {
+    return this.http.post<IUrlInformationDTO>(`${this.apiUrl}/api/expand-url`, urlInformationDTO);
   }
 }
