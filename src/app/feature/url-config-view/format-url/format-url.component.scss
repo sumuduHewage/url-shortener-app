@@ -1,0 +1,31 @@
+.btn-container{
+  margin-top: 24px!important;
+}
+
+.interactive-link {
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.interactive-link:hover {
+  color: #0056b3;
+}
+
+.url-topic-text {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.btn-custom {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #45a049;
+}
