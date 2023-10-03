@@ -30,7 +30,7 @@ export class FormatUrlComponent implements OnInit {
     });
   }
 
-  shortenUrl(): void {
+  public shortenUrl(): void {
     if (this.urlForm.valid) {
       const longUrl = this.urlForm.get('longUrl')?.value;
       const urlInformationDTO : IUrlInformationDTO = new UrlInformationDTO();
@@ -51,7 +51,7 @@ export class FormatUrlComponent implements OnInit {
     }
   }
 
-  expandUrl(): void {
+  public expandUrl(): void {
     if (this.expandUrlForm.valid) {
       const shortUrl = this.expandUrlForm.get('shortUrl')?.value;
       const urlInformationDTO : IUrlInformationDTO = new UrlInformationDTO();
